@@ -1,67 +1,30 @@
-import { Injectable, ConflictException, NotFoundException, BadRequestException } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Role } from './entities/role.entity';
-import { User } from '../user/entities/user.entity';
+import { Controller, Get, Post, Delete, Param, Body } from '@nestjs/common';
+import { RoleService } from './role.service';
+import { CreateRoleDto } from './dto/create-role.dto';
 
+@Controller('role')
+export class RoleController {
 
-@Injectable()
-export class RoleService {
+  constructor(private readonly roleService: RoleService) {}
 
-  constructor(
-    @InjectRepository(Role)
-    private roleRepository: Repository<Role>,
-
-    @InjectRepository(User)
-    private userRepository: Repository<User>,
-  ) {}
-
-  //check if role exist before creating any role
-  async createRole(name: string): Promise<Role> {
-    const existingRole = await this.roleRepository.findOne({ where: { name } });
-    if (existingRole) {
-      throw new ConflictException(`Role with name '${name}' already exists.`);
-    }
-
-    //if role doesn't exist then create
-    const role = this.roleRepository.create({ name });
-    return this.roleRepository.save(role);
+  @Post()
+  create(@Body() createRoleDto: CreateRoleDto) {
+    return this.roleService.createRole(createRoleDto.name);
   }
 
-  //check if role exist before deleting
-  async deleteRole(id: number): Promise<void> {
-    const role = await this.roleRepository.findOne({ where: { id }, relations: ['users'] });
-    if (!role) {
-      throw new NotFoundException(`Role with id '${id}' does not exist.`);
-    }
-
-    //if thats the only 1 user has that role you can not delete
-    const totalRoles = await this.roleRepository.count();
-    if (totalRoles === 1) {
-      throw new BadRequestException(`Cannot delete the only remaining role.`);
-    }
-
-    //check if role is assigned to user 
-    if (role.users && role.users.length > 0) {
-      throw new ConflictException(`Cannot delete role with id '${id}' because it is assigned to users.`);
-    }
-
-    //if not assigned to user  delete
-    await this.roleRepository.delete(id);
+  @Get()
+  findAll() {
+    return this.roleService.findAllRoles();
   }
 
-  //display/call all roles 
-  async findAllRoles(): Promise<Role[]> {
-    return await this.roleRepository.find();
+  @Get(':id')
+  findOne(@Param('id') id: number) {
+    return this.roleService.findOneRole(id);
   }
-  
-  //display/call one role 
-  async findOneRole(id: number): Promise<Role> {
-    const role = await this.roleRepository.findOne({ where: { id } });
-    if (!role) {
-      throw new NotFoundException(`Role with id '${id}' does not exist.`);
-    }
-    return role;
+
+  @Delete(':id')
+  remove(@Param('id') id: number) {
+    return this.roleService.deleteRole(id);
   }
 
 }

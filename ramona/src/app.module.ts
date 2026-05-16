@@ -8,10 +8,12 @@ import { RoleController } from './role/role.controller';
 import { RoleModule } from './role/role.module';
 import { GalleryService } from './gallery/gallery.service';
 import { GalleryModule } from './gallery/gallery.module';
+import { UserController } from './user/user.controller';
+import { UserModule } from './user/user.module';
 
 @Module({
-  imports: [ArticleModule, ImageModule, RoleModule, GalleryModule],
-  controllers: [AppController, RoleController],
+  imports: [ArticleModule, ImageModule, RoleModule, GalleryModule, UserModule],
+  controllers: [AppController, RoleController, UserController],
   providers: [AppService, ImageService, GalleryService],
 })
 export class AppModule {}
