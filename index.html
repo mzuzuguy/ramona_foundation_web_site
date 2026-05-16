@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ramona Foundation | Empowering Communities in Malawi</title>
+  <meta name="description" content="Ramona Foundation is a nonprofit dedicated to empowering communities and improving lives in Malawi." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    :root {
+      --green-50:  #f0faf0;
+      --green-100: #d6f0d6;
+      --green-300: #72c272;
+      --green-500: #3a8c3a;
+      --green-700: #235e23;
+      --green-900: #122e12;
+
+      --orange-50:  #fff8ee;
+      --orange-100: #ffe8c2;
+      --orange-300: #ffb84d;
+      --orange-500: #e07b00;
+      --orange-700: #a85c00;
+
+      --sand: #faf7f2;
+      --charcoal: #1e2b1e;
+      --mid: #4a5e4a;
+      --light-text: #6b7c6b;
+      --white: #ffffff;
+
+      --radius: 14px;
+      --radius-sm: 8px;
+      --shadow-sm: 0 2px 12px rgba(30,43,30,.07);
+      --shadow-md: 0 6px 28px rgba(30,43,30,.11);
+      --shadow-lg: 0 16px 48px rgba(30,43,30,.14);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--sand);
+      color: var(--charcoal);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    h1,h2,h3,h4 { font-family: 'Lora', serif; line-height: 1.25; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ── UTILITIES ── */
+    .container { width: 100%; max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    .tag {
+      display: inline-block;
+      padding: 3px 12px;
+      border-radius: 99px;
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .tag-green { background: var(--green-100); color: var(--green-700); }
+    .tag-orange { background: var(--orange-100); color: var(--orange-700); }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 28px;
+      border-radius: var(--radius-sm);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: .95rem;
+      cursor: pointer;
+      transition: all .22s ease;
+      border: 2px solid transparent;
+      text-decoration: none;
+    }
+    .btn-primary {
+      background: var(--green-500);
+      color: var(--white);
+      border-color: var(--green-500);
+    }
+    .btn-primary:hover {
+      background: var(--green-700);
+      border-color: var(--green-700);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(58,140,58,.30);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border-color: rgba(255,255,255,.55);
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,.15);
+      border-color: var(--white);
+      transform: translateY(-2px);
+    }
+    .btn-orange {
+      background: var(--orange-500);
+      color: var(--white);
+      border-color: var(--orange-500);
+    }
+    .btn-orange:hover {
+      background: var(--orange-700);
+      border-color: var(--orange-700);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(224,123,0,.28);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      background: rgba(18,46,18,.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      transition: box-shadow .3s;
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      padding: 0 28px;
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--white);
+      font-family: 'Lora', serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+    }
+    .nav-logo .logo-icon {
+      width: 36px; height: 36px;
+      background: var(--orange-500);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .85rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 4px;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,.75);
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: .88rem;
+      font-weight: 500;
+      transition: all .2s;
+    }
+    .nav-links a:hover { color: #fff; background: rgba(255,255,255,.1); }
+    .nav-right { display: flex; align-items: center; gap: 12px; }
+    .btn-admin-nav {
+      padding: 8px 18px;
+      border-radius: 6px;
+      background: var(--orange-500);
+      color: #fff;
+      font-size: .85rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all .2s;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .btn-admin-nav:hover { background: var(--orange-700); }
+    .hamburger {
+      display: none;
+      background: none; border: none; cursor: pointer;
+      color: #fff; font-size: 1.3rem;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(160deg, var(--green-900) 0%, var(--green-700) 55%, var(--orange-700) 100%);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 68px;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=1600&q=80') center/cover;
+      opacity: .12;
+    }
+    .hero-dots {
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,.08) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      max-width: 680px;
+      padding: 80px 28px 80px 0;
+      animation: fadeUp .9s ease both;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--orange-300);
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .hero-eyebrow span { width: 28px; height: 2px; background: var(--orange-300); display: inline-block; }
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      color: var(--white);
+      margin-bottom: 22px;
+      font-style: italic;
+      line-height: 1.18;
+    }
+    .hero h1 em { font-style: normal; color: var(--orange-300); }
+    .hero p {
+      color: rgba(255,255,255,.82);
+      font-size: 1.1rem;
+      margin-bottom: 36px;
+      line-height: 1.75;
+      max-width: 540px;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-stat-row {
+      display: flex;
+      gap: 36px;
+      margin-top: 56px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .hero-stat { color: #fff; }
+    .hero-stat strong { display: block; font-family: 'Lora', serif; font-size: 2rem; color: var(--orange-300); }
+    .hero-stat span { font-size: .82rem; opacity: .7; }
+
+    /* ── SECTION COMMON ── */
+    .section { padding: 88px 0; }
+    .section-alt { background: var(--green-50); }
+    .section-header { margin-bottom: 52px; }
+    .section-label {
+      display: inline-block;
+      color: var(--green-500);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .section-title-main {
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      color: var(--charcoal);
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      color: var(--light-text);
+      font-size: 1.05rem;
+      max-width: 600px;
+      line-height: 1.75;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .about-image-wrap {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: var(--green-100);
+    }
+    .about-image-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    .about-badge {
+      position: absolute;
+      bottom: 20px; right: 20px;
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .about-badge .ab-icon {
+      width: 40px; height: 40px;
+      background: var(--orange-100);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--orange-500);
+      font-size: 1.1rem;
+    }
+    .about-badge p { font-size: .8rem; color: var(--light-text); }
+    .about-badge strong { display: block; color: var(--charcoal); font-size: .95rem; }
+    .mv-cards { display: flex; flex-direction: column; gap: 20px; margin-top: 28px; }
+    .mv-card {
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      padding: 22px 24px;
+      border-left: 4px solid var(--green-300);
+      box-shadow: var(--shadow-sm);
+    }
+    .mv-card.orange { border-left-color: var(--orange-300); }
+    .mv-card h3 { font-size: 1rem; color: var(--charcoal); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .mv-card h3 i { color: var(--green-500); font-size: .95rem; }
+    .mv-card.orange h3 i { color: var(--orange-500); }
+    .mv-card p { color: var(--light-text); font-size: .92rem; line-height: 1.65; }
+
+    /* ── PROGRAMS ── */
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 24px;
+    }
+    .program-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 32px 26px;
+      box-shadow: var(--shadow-sm);
+      transition: all .25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .program-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--green-300);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .25s ease;
+    }
+    .program-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+    .program-card:hover::after { transform: scaleX(1); }
+    .prog-icon {
+      width: 54px; height: 54px;
+      background: var(--green-50);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      color: var(--green-500);
+      margin-bottom: 20px;
+      transition: all .25s;
+    }
+    .program-card:hover .prog-icon { background: var(--green-500); color: #fff; }
+    .program-card h3 { font-size: 1.05rem; color: var(--charcoal); margin-bottom: 10px; }
+    .program-card p { color: var(--light-text); font-size: .9rem; line-height: 1.65; }
+
+    /* ── NEWS ── */
+    .news-filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+    .filter-btn {
+      padding: 7px 18px;
+      border-radius: 99px;
+      border: 1.5px solid var(--green-100);
+      background: var(--white);
+      color: var(--mid);
+      font-size: .85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--green-500);
+      border-color: var(--green-500);
+      color: #fff;
+    }
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .news-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all .25s;
+    }
+    .news-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+    .news-media {
+      height: 190px;
+      overflow: hidden;
+      background: var(--green-100);
+    }
+    .news-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+    .news-card:hover .news-media img { transform: scale(1.05); }
+    .news-media iframe, .news-media video { width: 100%; height: 100%; }
+    .news-body { padding: 20px; }
+    .news-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .news-date { font-size: .78rem; color: var(--light-text); }
+    .news-body h3 { font-size: 1rem; color: var(--charcoal); margin-bottom: 8px; line-height: 1.4; }
+    .news-body p { font-size: .87rem; color: var(--light-text); line-height: 1.6; margin-bottom: 14px; }
+    .news-tags-row { display: flex; gap: 6px; flex-wrap: wrap; }
+    .news-tag { font-size: .72rem; background: var(--green-50); color: var(--green-700); border-radius: 99px; padding: 3px 10px; font-weight: 600; }
+    .view-all-wrap { text-align: center; margin-top: 40px; }
+
+    /* ── HELP / DONATE ── */
+    .help-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .help-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 32px 26px;
+      box-shadow: var(--shadow-sm);
+      text-align: center;
+      transition: all .25s;
+    }
+    .help-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+    .help-icon {
+      width: 60px; height: 60px;
+      background: var(--orange-50);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; color: var(--orange-500);
+      margin: 0 auto 18px;
+    }
+    .help-card h3 { font-size: 1.1rem; color: var(--charcoal); margin-bottom: 10px; }
+    .help-card p { color: var(--light-text); font-size: .9rem; line-height: 1.65; margin-bottom: 20px; }
+    .progress-box {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow-sm);
+    }
+    .progress-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px; }
+    .progress-header h3 { font-size: 1.05rem; color: var(--charcoal); }
+    .progress-amount { font-size: 1.3rem; font-weight: 700; color: var(--green-500); font-family: 'Lora', serif; }
+    .progress-bar { height: 12px; background: var(--green-50); border-radius: 99px; overflow: hidden; margin-bottom: 8px; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg, var(--green-500), var(--orange-400, #ffb84d)); width: 0; border-radius: 99px; transition: width 1.2s cubic-bezier(.4,0,.2,1); }
+    .progress-labels { display: flex; justify-content: space-between; font-size: .8rem; color: var(--light-text); }
+    .donation-note {
+      margin-top: 16px;
+      background: var(--orange-50);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      font-size: .88rem;
+      color: var(--orange-700);
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+
+    /* ── CONTACT ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 48px;
+    }
+    .contact-info h3 { font-size: 1.4rem; color: var(--charcoal); margin-bottom: 14px; }
+    .contact-info p { color: var(--light-text); font-size: .95rem; line-height: 1.7; margin-bottom: 28px; }
+    .contact-items { display: flex; flex-direction: column; gap: 18px; }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .ci-icon {
+      width: 44px; height: 44px;
+      background: var(--green-50);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--green-500);
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .contact-item h4 { font-size: .8rem; color: var(--light-text); font-family: 'DM Sans', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 2px; }
+    .contact-item p { color: var(--charcoal); font-size: .95rem; }
+    .social-row { display: flex; gap: 10px; margin-top: 28px; }
+    .social-link {
+      width: 40px; height: 40px;
+      background: var(--charcoal);
+      color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .9rem;
+      transition: all .2s;
+    }
+    .social-link:hover { background: var(--orange-500); transform: translateY(-3px); }
+    .contact-form-box {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 36px;
+      box-shadow: var(--shadow-md);
+    }
+    .contact-form-box h3 { font-size: 1.3rem; color: var(--charcoal); margin-bottom: 24px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-size: .82rem; font-weight: 600; color: var(--mid); margin-bottom: 6px; text-transform: uppercase; letter-spacing: .05em; }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1.5px solid var(--green-100);
+      border-radius: var(--radius-sm);
+      font-family: 'DM Sans', sans-serif;
+      font-size: .95rem;
+      color: var(--charcoal);
+      background: var(--sand);
+      transition: all .2s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--green-500);
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(58,140,58,.1);
+    }
+    .form-group textarea { min-height: 130px; resize: vertical; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--charcoal);
+      color: rgba(255,255,255,.75);
+      padding: 64px 0 28px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand h3 {
+      font-family: 'Lora', serif;
+      font-size: 1.2rem;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .footer-brand p { font-size: .88rem; line-height: 1.75; }
+    footer h4 { font-family: 'DM Sans', sans-serif; font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--orange-300); margin-bottom: 16px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-links a { font-size: .88rem; color: rgba(255,255,255,.65); transition: color .2s; }
+    .footer-links a:hover { color: #fff; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.1);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: .82rem;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .footer-bottom .social-row { margin-top: 0; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── MOBILE NAV ── */
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .about-image-wrap { aspect-ratio: 16/9; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .help-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 68px; left: 0; right: 0;
+        background: var(--green-900);
+        padding: 16px 0;
+        border-bottom: 1px solid rgba(255,255,255,.1);
+      }
+      .nav-links.open a { padding: 12px 28px; border-radius: 0; }
+    }
+    @media (max-width: 600px) {
+      .help-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .hero-stat-row { gap: 24px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">
+      <div class="logo-icon"><i class="fas fa-hands-helping"></i></div>
+      Ramona Foundation
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><i class="fas fa-bars"></i></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#programs">Programs</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#help">Help</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="btn-admin-nav" onclick="window.location.href='admin.html'">
+        <i class="fas fa-lock"></i> Admin
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-dots"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow"><span></span> Ramona Foundation &bull; Malawi</div>
+      <h1>Building Hope for a <em>Better Tomorrow</em></h1>
+      <p>We empower communities across Malawi through education, healthcare, and sustainable development — giving every person a chance to thrive.</p>
+      <div class="hero-btns">
+        <a href="#help" class="btn btn-primary"><i class="fas fa-heart"></i> Get Involved</a>
+        <a href="#news" class="btn btn-outline"><i class="fas fa-newspaper"></i> Latest News</a>
+      </div>
+      <div class="hero-stat-row">
+        <div class="hero-stat"><strong>5,000+</strong><span>Lives Impacted</span></div>
+        <div class="hero-stat"><strong>12</strong><span>Active Programs</span></div>
+        <div class="hero-stat"><strong>8 yrs</strong><span>Serving Malawi</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="about-image-wrap">
+          <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80" alt="Community support" loading="lazy" />
+          <div class="about-badge">
+            <div class="ab-icon"><i class="fas fa-award"></i></div>
+            <div>
+              <strong>Registered NGO</strong>
+              <p>Malawi, Est. 2016</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="section-header" style="margin-bottom:24px">
+          <div class="section-label">Who We Are</div>
+          <h2 class="section-title-main">Advocating for dignity in every community</h2>
+          <p class="section-desc">Ramona Foundation advocates for women's empowerment, supports the elderly, promotes education, and fosters sports development among youth — creating positive change from the ground up.</p>
+        </div>
+        <div class="mv-cards">
+          <div class="mv-card">
+            <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+            <p>To uplift communities by providing support, education, and resources that promote self-reliance, dignity, and positive change across Malawi.</p>
+          </div>
+          <div class="mv-card orange">
+            <h3><i class="fas fa-eye" style="color:var(--orange-500)"></i> Our Vision</h3>
+            <p>A society where every individual in Malawi has access to opportunities, care, and a hopeful future — regardless of background or circumstances.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="section section-alt" id="programs">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title-main">Our Programs</h2>
+      <p class="section-desc">Each program is developed with local input and tailored to create maximum, lasting impact in the communities we serve.</p>
+    </div>
+    <div class="programs-grid">
+      <div class="program-card reveal">
+        <div class="prog-icon"><i class="fas fa-users"></i></div>
+        <h3>Community Outreach</h3>
+        <p>Supporting vulnerable families with essential supplies, counseling, and crisis intervention services.</p>
+      </div>
+      <div class="program-card reveal">
+        <div class="prog-icon"><i class="fas fa-graduation-cap"></i></div>
+        <h3>Education Assistance</h3>
+        <p>Providing scholarships, school supplies, and infrastructure support to local schools across Malawi.</p>
+      </div>
+      <div class="program-card reveal">
+        <div class="prog-icon"><i class="fas fa-child"></i></div>
+        <h3>Youth Empowerment</h3>
+        <p>Skills training, mentorship, and entrepreneurship programs designed for Malawi's next generation.</p>
+      </div>
+      <div class="program-card reveal">
+        <div class="prog-icon"><i class="fas fa-heartbeat"></i></div>
+        <h3>Health &amp; Welfare</h3>
+        <p>Health education, sanitation projects, and direct support for local healthcare facilities.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section class="section" id="news">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Stay Informed</div>
+      <h2 class="section-title-main">News &amp; Updates</h2>
+      <p class="section-desc">The latest stories, events, and impact reports from our work across Malawi.</p>
+    </div>
+    <div class="news-filters" id="newsFilters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="article">Articles</button>
+      <button class="filter-btn" data-filter="image">Photos</button>
+      <button class="filter-btn" data-filter="video">Videos</button>
+      <button class="filter-btn" data-filter="event">Events</button>
+    </div>
+    <div class="news-grid" id="newsContainer"></div>
+    <div class="view-all-wrap">
+      <button class="btn btn-primary" id="viewAllBtn" style="display:none">View All Updates</button>
+    </div>
+  </div>
+</section>
+
+<!-- HELP -->
+<section class="section section-alt" id="help">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Make a Difference</div>
+      <h2 class="section-title-main">How You Can Help</h2>
+      <p class="section-desc">Your support — whether time, money, or a simple share — creates ripples of change in communities across Malawi.</p>
+    </div>
+    <div class="help-grid">
+      <div class="help-card reveal">
+        <div class="help-icon"><i class="fas fa-handshake"></i></div>
+        <h3>Volunteer</h3>
+        <p>Share your time and skills with our programs, either locally in Malawi or remotely from anywhere in the world.</p>
+        <a href="#contact" class="btn btn-primary">Volunteer Now</a>
+      </div>
+      <div class="help-card reveal">
+        <div class="help-icon"><i class="fas fa-hand-holding-usd"></i></div>
+        <h3>Donate</h3>
+        <p>Financial contributions help us sustain and expand our programs, reaching more families in need.</p>
+        <button class="btn btn-orange" onclick="showDonationOptions()">Donate Now</button>
+      </div>
+      <div class="help-card reveal">
+        <div class="help-icon"><i class="fas fa-bullhorn"></i></div>
+        <h3>Spread Awareness</h3>
+        <p>Share our mission with your network — awareness is one of the most powerful tools for change.</p>
+        <button class="btn btn-primary" onclick="shareFoundation()">Share Our Story</button>
+      </div>
+    </div>
+    <div class="progress-box reveal">
+      <div class="progress-header">
+        <h3>Annual Fundraising Goal</h3>
+        <div class="progress-amount" id="progressAmt">$18,450</div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="progress-labels">
+        <span>$0</span>
+        <span id="progressPct">36.9% raised</span>
+        <span>Goal: $50,000</span>
+      </div>
+      <div class="donation-note">
+        <i class="fas fa-info-circle" style="margin-top:2px;flex-shrink:0"></i>
+        <span>Our secure online donation system is coming soon. Contact us at <strong>ramonafoundation@gmail.com</strong> to donate directly.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Reach Out</div>
+      <h2 class="section-title-main">Get In Touch</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="contact-info">
+          <h3>We'd love to hear from you</h3>
+          <p>Reach out to learn more about our work, explore partnerships, or find out how to get involved.</p>
+          <div class="contact-items">
+            <div class="contact-item">
+              <div class="ci-icon"><i class="fas fa-envelope"></i></div>
+              <div>
+                <h4>Email</h4>
+                <p>ramonafoundation@gmail.com</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="ci-icon"><i class="fas fa-phone-alt"></i></div>
+              <div>
+                <h4>Phone / WhatsApp</h4>
+                <p>+265 999 123 456</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div>
+              <div>
+                <h4>Location</h4>
+                <p>Lilongwe, Malawi</p>
+              </div>
+            </div>
+          </div>
+          <div class="social-row">
+            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="contact-form-box">
+          <h3>Send a Message</h3>
+          <form id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" id="contactName" placeholder="Jane Doe" required />
+              </div>
+              <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" id="contactEmail" placeholder="jane@email.com" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Subject</label>
+              <select id="contactSubject">
+                <option value="general">General Inquiry</option>
+                <option value="volunteer">Volunteering</option>
+                <option value="donation">Donation</option>
+                <option value="partnership">Partnership</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Message</label>
+              <textarea id="contactMessage" placeholder="Tell us how we can help..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">
+              <i class="fas fa-paper-plane"></i> Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>Ramona Foundation</h3>
+        <p>Empowering communities and changing lives in Malawi through sustainable development, education, and compassionate outreach.</p>
+        <div class="social-row" style="margin-top:20px">
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Navigate</h4>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#programs">Programs</a></li>
+          <li><a href="#news">News</a></li>
+          <li><a href="#help">How to Help</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Programs</h4>
+        <ul class="footer-links">
+          <li><a href="#programs">Community Outreach</a></li>
+          <li><a href="#programs">Education Assistance</a></li>
+          <li><a href="#programs">Youth Empowerment</a></li>
+          <li><a href="#programs">Health &amp; Welfare</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li>ramonafoundation@gmail.com</li>
+          <li>+265 999 123 456</li>
+          <li>Lilongwe, Malawi</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Ramona Foundation. All Rights Reserved. Registered Nonprofit, Malawi.</span>
+      <a href="admin.html" style="color:rgba(255,255,255,.4);font-size:.8rem"><i class="fas fa-lock"></i> Admin</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── DATA (shared via localStorage with admin) ──
+  const DEFAULT_POSTS = [
+    { id:1, title:"New School Building Inauguration", content:"We are thrilled to announce the completion of the new school building in the Mulanje district. This building will serve over 200 children from surrounding villages and includes 6 classrooms, a library, and sanitation facilities.", type:"image", mediaUrl:"https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&q=80", date:"May 15, 2026", tags:["education","infrastructure","community"] },
+    { id:2, title:"Health Camp Success in Lilongwe", content:"Our recent health camp in Lilongwe was a tremendous success, providing free medical check-ups and medicines to over 500 people. We partnered with local healthcare professionals to offer a wide range of services.", type:"video", mediaUrl:"https://www.youtube.com/embed/dQw4w9WgXcQ", date:"April 28, 2026", tags:["health","community","outreach"] },
+    { id:3, title:"Youth Entrepreneurship Workshop", content:"Last month, we conducted a 3-day entrepreneurship workshop for 50 young adults in Blantyre. Participants learned business planning, financial management, and marketing skills to launch their own businesses.", type:"article", mediaUrl:"https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&q=80", date:"March 10, 2026", tags:["youth","empowerment","training"] },
+    { id:4, title:"Annual Community Day Celebration", content:"Join us for our Annual Community Day on June 20th! This event brings together all communities we serve for a day of cultural performances, games, and sharing of success stories. All are welcome!", type:"event", mediaUrl:"https://images.unsplash.com/photo-1545235617-9465d2a55698?w=800&q=80", date:"June 20, 2026", tags:["event","community","celebration"] },
+  ];
+
+  function getPosts() {
+    const stored = localStorage.getItem('rf_posts');
+    return stored ? JSON.parse(stored) : DEFAULT_POSTS;
+  }
+
+  function getMediaHtml(post) {
+    if (!post.mediaUrl) return '';
+    if (post.type === 'video') {
+      if (post.mediaUrl.includes('youtube.com') || post.mediaUrl.includes('youtu.be')) {
+        let id = '';
+        if (post.mediaUrl.includes('youtu.be')) id = post.mediaUrl.split('/').pop();
+        else if (post.mediaUrl.includes('embed')) id = post.mediaUrl.split('/').pop();
+        else id = new URLSearchParams(post.mediaUrl.split('?')[1]).get('v');
+        return `<iframe src="https://www.youtube.com/embed/${id}" frameborder="0" allowfullscreen></iframe>`;
+      }
+      if (post.mediaUrl.includes('vimeo.com')) {
+        const id = post.mediaUrl.split('/').pop();
+        return `<iframe src="https://player.vimeo.com/video/${id}" frameborder="0" allowfullscreen></iframe>`;
+      }
+      return `<video controls><source src="${post.mediaUrl}" type="video/mp4"></video>`;
+    }
+    return `<img src="${post.mediaUrl}" alt="${post.title}" loading="lazy" />`;
+  }
+
+  function renderNews(filter = 'all') {
+    const posts = getPosts();
+    const filtered = filter === 'all' ? posts : posts.filter(p => p.type === filter);
+    const container = document.getElementById('newsContainer');
+    const viewAllBtn = document.getElementById('viewAllBtn');
+    const toShow = filtered.slice(0, 4);
+
+    if (toShow.length === 0) {
+      container.innerHTML = '<p style="color:var(--light-text);grid-column:1/-1">No posts yet. Check back soon!</p>';
+      viewAllBtn.style.display = 'none';
+      return;
+    }
+
+    container.innerHTML = toShow.map(post => `
+      <div class="news-card reveal">
+        <div class="news-media">${getMediaHtml(post)}</div>
+        <div class="news-body">
+          <div class="news-meta">
+            <span class="tag ${post.type === 'event' ? 'tag-orange' : 'tag-green'}">${post.type}</span>
+            <span class="news-date">${post.date}</span>
+          </div>
+          <h3>${post.title}</h3>
+          <p>${post.content.substring(0,110)}…</p>
+          <div class="news-tags-row">${post.tags.map(t => `<span class="news-tag">${t}</span>`).join('')}</div>
+        </div>
+      </div>
+    `).join('');
+
+    viewAllBtn.style.display = filtered.length > 4 ? 'inline-flex' : 'none';
+    viewAllBtn.onclick = () => {
+      container.innerHTML = filtered.map(post => `
+        <div class="news-card reveal">
+          <div class="news-media">${getMediaHtml(post)}</div>
+          <div class="news-body">
+            <div class="news-meta">
+              <span class="tag ${post.type === 'event' ? 'tag-orange' : 'tag-green'}">${post.type}</span>
+              <span class="news-date">${post.date}</span>
+            </div>
+            <h3>${post.title}</h3>
+            <p>${post.content.substring(0,110)}…</p>
+            <div class="news-tags-row">${post.tags.map(t => `<span class="news-tag">${t}</span>`).join('')}</div>
+          </div>
+        </div>
+      `).join('');
+      viewAllBtn.style.display = 'none';
+      initReveal();
+    };
+    initReveal();
+  }
+
+  // Filter buttons
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderNews(btn.dataset.filter);
+    });
+  });
+
+  // Contact form
+  document.getElementById('contactForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const name = document.getElementById('contactName').value;
+    alert(`Thank you, ${name}! Your message has been received. We'll get back to you soon.`);
+    e.target.reset();
+  });
+
+  function showDonationOptions() {
+    alert("Thank you for your interest! Our online donation system is coming soon. Please email ramonafoundation@gmail.com for donation instructions.");
+  }
+  function shareFoundation() {
+    if (navigator.share) {
+      navigator.share({ title:'Ramona Foundation', text:'Empowering communities in Malawi!', url: window.location.href });
+    } else {
+      alert('Share our website: ' + window.location.href);
+    }
+  }
+
+  // Mobile nav
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    hamburger.innerHTML = navLinks.classList.contains('open') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+  });
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => { navLinks.classList.remove('open'); hamburger.innerHTML='<i class="fas fa-bars"></i>'; });
+  });
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const el = document.querySelector(a.getAttribute('href'));
+      if (el) window.scrollTo({ top: el.offsetTop - 72, behavior: 'smooth' });
+    });
+  });
+
+  // Scroll reveal
+  function initReveal() {
+    const els = document.querySelectorAll('.reveal:not(.visible)');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); obs.unobserve(entry.target); } });
+    }, { threshold: 0.12 });
+    els.forEach(el => obs.observe(el));
+  }
+
+  // Progress bar
+  window.addEventListener('load', () => {
+    const pct = (18450 / 50000) * 100;
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressPct').textContent = pct.toFixed(1) + '% raised';
+    initReveal();
+  });
+
+  renderNews();
+</script>
+</body>
+</html>
