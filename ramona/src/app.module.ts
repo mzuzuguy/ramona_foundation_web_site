@@ -10,10 +10,12 @@ import { GalleryService } from './gallery/gallery.service';
 import { GalleryModule } from './gallery/gallery.module';
 import { UserController } from './user/user.controller';
 import { UserModule } from './user/user.module';
+import { StatsService } from './stats/stats.service';
+import { StatsModule } from './stats/stats.module';
 
 @Module({
-  imports: [ArticleModule, ImageModule, RoleModule, GalleryModule, UserModule],
+  imports: [ArticleModule, ImageModule, RoleModule, GalleryModule, UserModule, StatsModule],
   controllers: [AppController, RoleController, UserController],
-  providers: [AppService, ImageService, GalleryService],
+  providers: [AppService, ImageService, GalleryService, StatsService],
 })
 export class AppModule {}

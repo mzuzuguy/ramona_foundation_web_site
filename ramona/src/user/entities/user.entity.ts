@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, BeforeInsert, BeforeUpdate, CreateDateColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, BeforeInsert, BeforeUpdate, CreateDateColumn} from "typeorm";
 import { Role } from "../../role/entities/role.entity";
 import { Exclude } from 'class-transformer';
 import * as bcrypt from 'bcrypt';
@@ -11,7 +11,7 @@ export class User {
     @Column()
     username: string;
 
-    @Column({unique; true})
+    @Column({unique: true})
     email: string;
 
     @Column()
@@ -21,7 +21,7 @@ export class User {
     @CreateDateColumn()
     created_at: Date;
 
-    @OneToMany(() => Role, (role) => role.users)
+    @ManyToOne(() => Role, (role) => role.users)
     role: Role;//one role many users
 
 
