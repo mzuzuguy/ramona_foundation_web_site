@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, BeforeInsert, BeforeUpdate, CreateDateColumn} from "typeorm";
 import { Role } from "../../role/entities/role.entity";
 import { Exclude } from 'class-transformer';
-import * as bcrypt from 'bcrypt';
+//import * as bcrypt from 'bcrypt';
 
 @Entity()
 export class User {
@@ -25,7 +25,7 @@ export class User {
     role: Role;//one role many users
 
 
-    //Automatically hash the password before saving/updating
+    /*//Automatically hash the password before saving/updating
     @BeforeInsert()
     @BeforeUpdate()
     async hashPassword() {
@@ -33,5 +33,6 @@ export class User {
         this.password = await bcrypt.hash(this.password, 10)//cost factor
     }
 
-  }    
+  }   */
+
 }
