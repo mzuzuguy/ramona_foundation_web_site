@@ -45,7 +45,7 @@ export class UserService {
         });
     }
 
-        //find user by role
+    //find user by role
     async findByRole(roleName: string): Promise<Role | null> {
         return this.roleRepository.findOne({
             where: { name: roleName },
@@ -119,6 +119,8 @@ export class UserService {
         const user = this.userRepository.create({ username, email, password, role });
         return this.userRepository.save(user);
     }
+
+
 
     
 
