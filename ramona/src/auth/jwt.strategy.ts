@@ -6,6 +6,8 @@ import { jwtConstants } from './auth.constants';
 import { JwtPayload } from './interfaces/jwt-payload.interface';
 import { AuthenticatedUser } from './interfaces/authenticated-user.interface';
 
+
+//checls if the jwt is valid and extracts user info from it
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor() {

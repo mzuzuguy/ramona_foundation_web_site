@@ -12,6 +12,7 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
+  // Validates user credentials and returns an authenticated user object if valid
   async validateUser(
     username: string,
     password: string,
@@ -26,6 +27,7 @@ export class AuthService {
     return null;
   }
 
+  // Generates a JWT token for the authenticated user
   login(user: AuthenticatedUser): LoginResponse {
     const payload: JwtPayload = { username: user.username, sub: user.userId };
     return {
